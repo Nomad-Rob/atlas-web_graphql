@@ -5,14 +5,14 @@ const express = require('express');
 // Importing the express-graphql middleware
 const {graphqlHTTP} = require('express-graphql');
 // Importing the TaskType from the schema
-const { TaskType } = require('./schema/schema.js');
+const schema = require('./schema/schema');
 
 const app = express();
 
-// Setting up the graphql middleware
-app.use('/graphql',graphqlHTTP({
-  schema: TaskType,
-  graphiql: true,
+// Use the graphqlHTTP middleware with your schema
+app.use('/graphql', graphqlHTTP({
+  schema: schema, // Make sure this references the schema you've defined
+  graphiql: true, // Enables the GraphiQL interface
 }));
 
 // Listening for requests on port 8080
