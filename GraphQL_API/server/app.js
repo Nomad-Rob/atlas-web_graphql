@@ -7,6 +7,9 @@ const {graphqlHTTP} = require('express-graphql');
 // Importing the TaskType from the schema
 const schema = require('./schema/schema');
 
+// Require the mongoose module
+const mongoose = require('mongoose');
+
 const app = express();
 
 // Use the graphqlHTTP middleware with your schema
