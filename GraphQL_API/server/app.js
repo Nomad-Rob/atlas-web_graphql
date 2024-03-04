@@ -9,10 +9,6 @@ const schema = require('./schema/schema');
 
 // Require the mongoose module
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/Cluster0', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connection.once('open', () => {
-  console.log('Connected to the database');
-});
 
 const app = express();
 
