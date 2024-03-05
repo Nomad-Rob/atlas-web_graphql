@@ -15,8 +15,10 @@ const getTasksQuery = gql`
 
 // Define the TaskList component
 function TaskList(props) {
+  // Console.log the props
+  console.log(props);
   // Optional: A state for managing selected task, if needed
-  const [selected, setSelected] = useState(null);
+  const [setSelected] = useState(null);
 
   // Function to display tasks
   function displayTasks() {
