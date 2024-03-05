@@ -12,9 +12,10 @@ const mongoose = require('mongoose');
 
 // Allow cross-origin requests
 const cors = require('cors');
-app.use(cors());
 
 const app = express();
+
+app.use(cors());
 
 // Use the graphqlHTTP middleware with your schema
 app.use('/graphql', graphqlHTTP({
