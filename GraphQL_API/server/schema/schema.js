@@ -3,7 +3,7 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLID, GraphQLList, GraphQLNonNull } = require("graphql");
 
 // Not needed anymore
-const _ = require('lodash');
+// const _ = require('lodash');
 
 //Task 7 - Setting up the schema for the task and project
 const Project = require('../models/project');
