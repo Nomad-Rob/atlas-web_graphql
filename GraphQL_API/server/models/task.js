@@ -4,13 +4,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Create a new schema for the task
-const taskSchema = new Schema({
-  name: String,
+const taskSchema = new Schema ({
+  title: String,
+  weight: Number,
   description: String,
-  projectID: String,
-  completed: Boolean
+  projectId: String
 });
 
-// Export the model
 module.exports = mongoose.model('Task', taskSchema);

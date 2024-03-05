@@ -11,10 +11,17 @@ const cors = require('cors');
 // Require the mongoose module
 const mongoose = require('mongoose');
 
-// Connect to the database
+
 const app = express();
 
 app.use(cors());
+
+// Connect to the database
+mongoose.connect('mongodb+srv://1234567890:1234567890@cluster0.jk2tcx7.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true });
+
+mongoose.connection.once('open', () => {
+  console.log('connected to database');
+});
 
 // Use the graphqlHTTP middleware with your schema
 app.use('/graphql', graphqlHTTP({

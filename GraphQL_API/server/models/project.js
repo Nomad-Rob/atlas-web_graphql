@@ -4,12 +4,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Create a new schema for the project
-const projectSchema = new Schema({
-  name: String,
+const projectSchema = new Schema ({
+  title: String,
+  weight: Number,
   description: String,
-  completed: Boolean
+  projectId: String
 });
 
-// Export the model
 module.exports = mongoose.model('Project', projectSchema);

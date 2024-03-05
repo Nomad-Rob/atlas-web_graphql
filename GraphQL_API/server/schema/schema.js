@@ -2,6 +2,7 @@
 
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLID, GraphQLList, GraphQLNonNull } = require("graphql");
 
+// Not needed anymore
 const _ = require('lodash');
 
 //Task 7 - Setting up the schema for the task and project
@@ -32,7 +33,6 @@ const TaskType = new GraphQLObjectType({
     project: {
       type: ProjectType,
       resolve(parent, args) {
-        // Updating to use the MongoDB model
         return Project.findById(parent.projectId);
       },
     }
@@ -50,7 +50,6 @@ const ProjectType = new GraphQLObjectType({
     tasks: {
       type: new GraphQLList(TaskType),
       resolve(parent, args) {
-        // Updating to use the MongoDB model
         return Task.find({ projectId: parent.id });
       },
     },
@@ -60,39 +59,38 @@ const ProjectType = new GraphQLObjectType({
 // Define the RootQuery for the TaskType
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
-  description: 'This is the default root query provided by the application',
   fields: {
     task: {
       type: TaskType,
-      args: { id: { type: GraphQLString } },
+      args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        // Updating to use the MongoDB model
+        // Fetching a task from the database using Mongoose query
         return Task.findById(args.id);
       },
     },
     project: {
       type: ProjectType,
-      args: { id: { type: GraphQLString } },
+      args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        // Updating to use the MongoDB model
+        // Fetching a project from the database using Mongoose query
         return Project.findById(args.id);
       },
     },
     tasks: {
       type: new GraphQLList(TaskType),
       resolve(parent, args) {
-        // Updating to use the MongoDB model
+        // Fetching all tasks from the database
         return Task.find({});
       },
     },
     projects: {
       type: new GraphQLList(ProjectType),
       resolve(parent, args) {
-        // Updating to use the MongoDB model
+        // Fetching all projects from the database
         return Project.find({});
       },
     },
-  }
+  },
 });
 
 // Define the Mutation for the TaskType
