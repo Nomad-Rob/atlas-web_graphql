@@ -10,6 +10,10 @@ const schema = require('./schema/schema');
 // Require the mongoose module
 const mongoose = require('mongoose');
 
+// Allow cross-origin requests
+const cors = require('cors');
+app.use(cors());
+
 const app = express();
 
 // Use the graphqlHTTP middleware with your schema
