@@ -6,13 +6,12 @@ const express = require('express');
 const {graphqlHTTP} = require('express-graphql');
 // Importing the TaskType from the schema
 const schema = require('./schema/schema');
-
+// Allow cross-origin requests
+const cors = require('cors');
 // Require the mongoose module
 const mongoose = require('mongoose');
 
-// Allow cross-origin requests
-const cors = require('cors');
-
+// Connect to the database
 const app = express();
 
 app.use(cors());
