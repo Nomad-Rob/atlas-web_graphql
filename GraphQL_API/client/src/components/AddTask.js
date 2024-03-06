@@ -1,7 +1,7 @@
 // client/src/components/AddTask.js
-import React from 'react';
-import { gql } from 'apollo-boost';
+import React, { useState } from 'react';
 import { graphql } from 'react-apollo';
+import { flowRight as compose } from 'lodash';
 import { getProjectsQuery, getTasksQuery, addTaskMutation } from '../queries/queries';
 
 function AddTask(props) {
