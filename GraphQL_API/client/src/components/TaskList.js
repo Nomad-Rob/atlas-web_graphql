@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import gql from 'apollo-boost';
 import { graphql } from 'react-apollo';
+import { getTasksQuery } from '../queries/queries';
 
 
 // Define the GraphQL query

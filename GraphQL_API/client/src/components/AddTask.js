@@ -1,8 +1,8 @@
 // client/src/components/AddTask.js
-
 import React from 'react';
 import { gql } from 'apollo-boost';
 import { graphql } from 'react-apollo';
+import { getProjectsQuery, getTasksQuery, addTaskMutation } from '../queries/queries';
 
 const getProjectsQuery = gql`
   {

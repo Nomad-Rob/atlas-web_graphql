@@ -1,29 +1,59 @@
-import React from 'react';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
+import { gql } from 'apollo-boost';
 
-// components
-import TaskList from './components/TaskList';
-import AddTask from './components/AddTask';
-import AddProject from './components/AddProject';
+export const getProjectsQuery = gql`
+  {
+    projects {
+      id
+      title
+    }
+  }
+`;
 
-// apollo client setup
-const client = new ApolloClient({
-  uri: 'http://localhost:8080/graphql'
-});
+export const getTasksQuery = gql`
+  {
+    tasks {
+      id
+      title
+    }
+  }
+`;
 
-function App() {
-  return (
-    <ApolloProvider client={ client }>
-      <div id="main">
-        <div id="bg"></div>
-        <h1>Holberton School Tasks</h1>
-        <TaskList />
-        <AddProject />
-        <AddTask />
-      </div>
-    </ApolloProvider>
-  );
-}
+export const addTaskMutation = gql`
+  mutation($title: String!, $weight: Int!, $description: String!, $projectId: ID!) {
+    addTask(title: $title, weight: $weight, description: $description, projectId: $projectId) {
+      title
+      id
+    }
+  }
+`;
 
-export default App;
+export const addProjectMutation = gql`
+  mutation($title: String!, $weight: Int!, $description: String!) {
+    addProject(title: $title, weight: $weight, description: $description) {
+      title
+      id
+    }
+  }
+`;
+
+export const getTaskDetailQuery = gql`
+  query($id: ID) {
+    task(id: $id) {
+      id
+      title
+      weight
+      description
+      project {
+        id
+        title
+        weight
+        description
+        tasks {
+          id
+          title
+          weight
+        }
+      }
+    }
+  }
+`;
