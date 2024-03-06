@@ -1,11 +1,12 @@
 mutation {
-  addTask(title: "New Task", weight: 1, description: "Task Description", projectId: "projectIdHere") {
-    id
+  addTask(
+    title: "Testing the addTask mutation",
+    weight: 2,
+    description: "Testing the addTask mutation with a description",
+    projectId: "0x5e8e"
+  ) {
     title
     weight
     description
-    project {
-      title
-    }
   }
 }
