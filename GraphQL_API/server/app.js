@@ -25,7 +25,7 @@ mongoose.connection.once('open', () => {
 
 // Use the graphqlHTTP middleware with your schema
 app.use('/graphql', graphqlHTTP({
-  schema: schema, // Make sure this references the schema you've defined
+  schema, // Make sure this references the schema you've defined
   graphiql: true, // Enables the GraphiQL interface
 }));
 
